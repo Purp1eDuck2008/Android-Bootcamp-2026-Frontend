@@ -85,6 +85,7 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_logo
 drawable logo
 drawable logo_with_appname
 drawable notification_action_background

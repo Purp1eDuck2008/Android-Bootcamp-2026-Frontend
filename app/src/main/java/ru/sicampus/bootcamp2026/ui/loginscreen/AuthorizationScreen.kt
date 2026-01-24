@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,20 +43,20 @@ fun AuthorizationScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        Spacer(modifier = Modifier.height(64.dp))
+        Spacer(modifier = Modifier.height(32.dp))
         Icon (
             painter = painterResource(R.drawable.logo_with_appname),
             contentDescription = "Logo",
-            tint = MaterialTheme.colorScheme.primary
+            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
         )
         Spacer(modifier = Modifier.height(163.dp))
-        Column (
-            modifier = Modifier
+        Column (modifier = Modifier
+                .clip(RoundedCornerShape(16.dp))
                 .height(300.dp)
                 .width(320.dp)
                 .background(MaterialTheme.colorScheme.onSecondary) //лучше использовать SurfaceContainer цвет
                 //.clip(RoundedCornerShape(20.dp))
-                .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(8.dp)) //Добавь RoundedCornerShape к background модификатору
+                .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(16.dp)) //Добавь RoundedCornerShape к background модификатору
             //.clip(RoundedCornerShape(20.dp))
         ){
             Text(
@@ -99,11 +100,12 @@ fun AuthorizationScreen(
                 )
             }
         }
+        Spacer(modifier = Modifier.height(4.dp))
         Row() {
             Text(
                 text = "Нет аккаунта?"
             )
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.width(4.dp))
             Text(
                 modifier = Modifier.clickable(
                     enabled = true,

@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,15 +45,16 @@ fun RegistrationScreen(
            horizontalAlignment = Alignment.CenterHorizontally
             )
     {
-        Spacer(modifier = Modifier.height(64.dp))
+        Spacer(modifier = Modifier.height(32.dp))
         Icon (
             painter = painterResource(R.drawable.logo_with_appname),
             contentDescription = "Logo",
-            tint = MaterialTheme.colorScheme.primary
+            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
         )
         Spacer(modifier = Modifier.height(163.dp))
         Column (
             modifier = Modifier
+                .clip(RoundedCornerShape(16.dp))
                 .height(300.dp)
                 .width(320.dp)
                 .background(MaterialTheme.colorScheme.onSecondary)  //лучше использовать SurfaceContainer цвет
@@ -60,9 +62,8 @@ fun RegistrationScreen(
                 .border(
                     1.dp,
                     MaterialTheme.colorScheme.outline,
-                    RoundedCornerShape(8.dp)
-                )
-                //.clip(RoundedCornerShape(20.dp))
+                    RoundedCornerShape(16.dp)
+                ),
         ){
             Text(
                 modifier = Modifier.padding(start = 24.dp, top = 24.dp ),
@@ -105,13 +106,14 @@ fun RegistrationScreen(
                 )
             }
         }
+        Spacer(modifier = Modifier.height(4.dp))
         Row(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = "Уже есть аккаунт?"
             )
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.width(4.dp))
             Text(
                 modifier = Modifier.clickable(
                     enabled = true,

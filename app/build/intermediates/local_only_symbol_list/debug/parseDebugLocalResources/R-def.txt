@@ -10,6 +10,7 @@ color white
 drawable ic_back
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_logo
 drawable logo
 drawable logo_with_appname
 drawable people_start_1
