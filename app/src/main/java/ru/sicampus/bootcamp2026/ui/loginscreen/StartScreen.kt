@@ -1,4 +1,4 @@
-package ru.sicampus.bootcamp2026
+package ru.sicampus.bootcamp2026.ui.loginscreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,18 +26,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ru.sicampus.bootcamp2026.R
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
 fun StartScreen(
-    people_for_startscreen: List<Int> = listOf(R.drawable.people_start_1,
+    modifier: Modifier = Modifier,
+    people_for_startscreen: List<Int> = listOf(
+        R.drawable.people_start_1,
                                                R.drawable.people_start_2,
                                                R.drawable.people_start_3,
                                                R.drawable.people_start_4,
                                                R.drawable.people_start_5
-    )
+    ),
+    OnRegisterClick: () -> Unit,
+    OnLoginClick: () -> Unit
 ) {
-    Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
+    Column(modifier = modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
            horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.height(64.dp))
         Icon (
@@ -79,14 +84,15 @@ fun StartScreen(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = null,
                 modifier = Modifier
-                    .width(412.dp)
-                    .height(412.dp)
-                    .align (Alignment.BottomStart),
+                    .width(360.dp)
+                    .height(360.dp)
+                    .align (Alignment.BottomCenter)
+                    .padding(bottom = 26.dp),
                 tint = MaterialTheme.colorScheme.primaryContainer
                 )
 
             Button(
-                onClick = {},
+                onClick = OnRegisterClick,
                 modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(bottom = 92.dp)
@@ -102,16 +108,16 @@ fun StartScreen(
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
-            Button(
-                onClick = {},
+            Button(                                                // я бы сделал OutlinedButton или поменял цвет на
+                onClick = OnLoginClick,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 32.dp)
                     .width(360.dp)
                     .height(52.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                    contentColor = MaterialTheme.colorScheme.onPrimary
+                    containerColor = MaterialTheme.colorScheme.onSurfaceVariant,  // тут можно surfaceVariant
+                    contentColor = MaterialTheme.colorScheme.onPrimary            // а тут onSurfaceVariant
                 )
             ) {
                 Text(
@@ -128,6 +134,9 @@ fun StartScreen(
 @Composable
 fun StartScreenPreview() {
     AndroidBootcamp2026FrontendTheme {
-        StartScreen()
+        StartScreen(
+            OnLoginClick = {},
+            OnRegisterClick = {}
+        )
     }
 }
