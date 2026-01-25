@@ -11,6 +11,8 @@ drawable ic_back
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_logo
+drawable ic_profile_circle
+drawable ic_settings_circle
 drawable logo
 drawable logo_with_appname
 drawable people_start_1
