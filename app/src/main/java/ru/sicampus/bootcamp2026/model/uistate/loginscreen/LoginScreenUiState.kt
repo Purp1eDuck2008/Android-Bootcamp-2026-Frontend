@@ -5,4 +5,7 @@ data class LoginScreenUiState (
     val authPassword: String = "",
     val regLogin: String = "",
     val regPassword: String = "",
+    val currentComposable: String = "login",
+    //val isLoginEmail: Boolean = false
+    val showLoginPassword: Boolean = false
 )

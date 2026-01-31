@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ru.sicampus.bootcamp2026.ui.LoginScreen
+import ru.sicampus.bootcamp2026.ui.loginscreen.StartScreen
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 class LoginActivity : ComponentActivity() {

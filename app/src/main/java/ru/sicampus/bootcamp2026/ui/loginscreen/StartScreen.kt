@@ -3,14 +3,15 @@ package ru.sicampus.bootcamp2026.ui.loginscreen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 
-import androidx.compose.foundation.layout.fillMaxSize
+
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -27,9 +28,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
+
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.sicampus.bootcamp2026.R
@@ -38,29 +40,22 @@ import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 @Composable
 fun StartScreen(
     modifier: Modifier = Modifier,
-    OnRegisterClick: () -> Unit,
-    OnLoginClick: () -> Unit
+    OnLoginValueChange: (String) -> Unit,
+    OnProceedClick: () -> Unit,
+    loginValue: String,
+    validateEmail: Boolean
 ) {
-    Box(modifier = modifier
-        .fillMaxSize()
-        .background(
-            brush = Brush.linearGradient(
-                colors = listOf( //Заменить на значения из колор хмл
-                    Color(color = 0xFF5B22BF),
-                    Color(color = 0xFF7624AA)
-                )
-            )
-        ),
-    ) {
+
         Column(modifier = Modifier
-            .align(Alignment.BottomCenter)
-            .clip(RoundedCornerShape(
-                topEnd = 32.dp,
-                topStart = 32.dp
+            .imePadding()
+            .clip(
+                RoundedCornerShape(
+                    topEnd = 32.dp,
+                    topStart = 32.dp
                 )
             )
             .fillMaxWidth()
-            .height(500.dp)
+            .height(480.dp)
             .background(color = MaterialTheme.colorScheme.primary),
             horizontalAlignment = Alignment.CenterHorizontally
         ){
@@ -71,8 +66,8 @@ fun StartScreen(
                 tint = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = loginValue,
+                onValueChange = {OnLoginValueChange(it)},
                 modifier = Modifier
                     .padding(
                         top = 16.dp,
@@ -82,7 +77,7 @@ fun StartScreen(
                 shape = RoundedCornerShape(16.dp),
                 label = {
                     Text(
-                        text = "Введите ваш email",
+                        text = stringResource(R.string.enter_mail),
                         color = MaterialTheme.colorScheme.secondary
                     )
                 },
@@ -95,7 +90,7 @@ fun StartScreen(
                 singleLine = true
             )
             Button(
-                onClick = { },
+                onClick = { OnProceedClick() },
                 modifier = Modifier
                     .padding(
                         top = 8.dp,
@@ -103,15 +98,19 @@ fun StartScreen(
                     .height(52.dp)
                     .width(320.dp),
                 shape = RoundedCornerShape(16.dp),
+                enabled = validateEmail,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondary
+                    containerColor = MaterialTheme.colorScheme.onPrimary,
+                    contentColor = MaterialTheme.colorScheme.primary,
+                    disabledContainerColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    disabledContentColor = MaterialTheme.colorScheme.onSecondary
                 )
             ) {
                 Text(
-                    text = "Продолжить",
+                    text = stringResource(R.string.proceed),
                 )
             }
+
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
@@ -123,7 +122,7 @@ fun StartScreen(
                     color = MaterialTheme.colorScheme.secondary
                 )
                 Text(
-                    text = "или",
+                    text = stringResource(R.string.or),
                     modifier = Modifier.padding(horizontal = 12.dp),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.secondary
@@ -135,7 +134,7 @@ fun StartScreen(
             }
 
             Button(
-                onClick = { },
+                onClick = { OnProceedClick() },
                 modifier = Modifier
                     .padding(
                         top = 16.dp,
@@ -159,7 +158,7 @@ fun StartScreen(
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(
-                        text = "Войти через Google",
+                        text = stringResource(R.string.login_with_google),
                     )
                 }
             }
@@ -187,27 +186,18 @@ fun StartScreen(
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(
-                        text = "Войти через Apple",
+                        text = stringResource(R.string.login_with_apple),
                     )
                 }
             }
             Spacer(modifier = Modifier.padding(8.dp))
             Text(
-                text = "Проблемы со входом?",
+                text = stringResource(R.string.login_issues),
                 modifier = Modifier.padding(horizontal = 12.dp),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f)
             )
-
-
-
         }
-
-
-
-
-    }
-
 
 }
 
@@ -219,9 +209,11 @@ fun StartScreen(
 fun StartScreenPreview2() {
     AndroidBootcamp2026FrontendTheme {
         StartScreen(
-            OnLoginClick = {},
-            OnRegisterClick = {}
-
+            modifier = Modifier,
+            OnLoginValueChange = { },
+            loginValue = "",
+            validateEmail = false,
+            OnProceedClick = {}
         )
     }
 }

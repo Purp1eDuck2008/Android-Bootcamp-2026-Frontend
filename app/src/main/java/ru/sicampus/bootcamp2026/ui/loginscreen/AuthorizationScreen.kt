@@ -3,22 +3,27 @@ package ru.sicampus.bootcamp2026.ui.loginscreen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -27,10 +32,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,21 +47,17 @@ import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 @Composable
 fun AuthorizationScreen(
     modifier: Modifier = Modifier,
+    enteredEmail: String,
+    OnBackButtonClick:() -> Unit,
+    OnPasswordValueChange:(String) -> Unit,
+    passwordValue: String,
+    showPassword: Boolean,
+    ShowPasswordToggle: () -> Unit
 ) {
-    Box(modifier = modifier
-        .fillMaxSize()
-        .background(
-            brush = Brush.linearGradient(
-                colors = listOf( //Заменить на значения из колор хмл
-                    Color(color = 0xFF5B22BF),
-                    Color(color = 0xFF7624AA)
-                )
-            )
-        ),
-    ) {
+
         Column(
             modifier = Modifier
-                .align(Alignment.BottomCenter)
+                .imePadding()
                 .clip(
                     RoundedCornerShape(
                         topEnd = 32.dp,
@@ -74,7 +77,8 @@ fun AuthorizationScreen(
                 modifier = Modifier
                     .padding(
                         top = 28.dp,
-                        bottom = 16.dp)
+                        bottom = 16.dp
+                    )
                     .height(32.dp)
               )
             Row(
@@ -90,6 +94,11 @@ fun AuthorizationScreen(
                         contentDescription = "",
                         tint = MaterialTheme.colorScheme.onPrimary,
                         modifier = Modifier
+                            .clickable(
+                                enabled = true,
+                                onClickLabel = null,
+                                onClick = { OnBackButtonClick() }
+                            )
                             .align(Alignment.CenterStart)
                             .padding(start = 16.dp)
                             .size(32.dp)
@@ -97,7 +106,7 @@ fun AuthorizationScreen(
 
                     Text(
                         fontSize = 24.sp,
-                        text = " Авторизация",
+                        text = stringResource(R.string.authorization),
                         color = MaterialTheme.colorScheme.onPrimary,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.align(Alignment.Center)
@@ -105,14 +114,14 @@ fun AuthorizationScreen(
                 }
             }
             Text(
-                text = "mail@gmail.com",
+                text = enteredEmail,
                 color = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier
                     .padding(top = 24.dp)
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = passwordValue,
+                onValueChange = {OnPasswordValueChange(it)},
                 modifier = Modifier
                     .padding(
                         top = 20.dp,
@@ -122,7 +131,7 @@ fun AuthorizationScreen(
                 shape = RoundedCornerShape(16.dp),
                 label = {
                     Text(
-                        text = "Пароль",
+                        text = stringResource(R.string.password),
                         color = MaterialTheme.colorScheme.secondary
                     )
                 },
@@ -132,9 +141,23 @@ fun AuthorizationScreen(
                     focusedLabelColor = MaterialTheme.colorScheme.secondary,
                     unfocusedLabelColor = MaterialTheme.colorScheme.secondary
                 ),
-                singleLine = true
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Password
+                ),
+                visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                trailingIcon = {
+                    val image = if (showPassword)
+                        Icons.Filled.Visibility
+                    else
+                        Icons.Filled.VisibilityOff
+
+                    IconButton(onClick = { ShowPasswordToggle() }) {
+                        Icon(imageVector = image, contentDescription = null)
+                    }
+                }
             )
-            Button( //добавь чтобы по нажатию кнопки скрывался пороль
+            Button(
                 onClick = { },
                 modifier = Modifier
                     .padding(
@@ -144,16 +167,19 @@ fun AuthorizationScreen(
                     .width(320.dp),
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondary
-                )
+                    containerColor = MaterialTheme.colorScheme.onPrimary,
+                    contentColor = MaterialTheme.colorScheme.primary,
+                    disabledContainerColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    disabledContentColor = MaterialTheme.colorScheme.onSecondary
+                ),
+                enabled = passwordValue.length >= 8
             ) {
                 Text(
-                    text = "Продолжить",
+                    text = stringResource(R.string.proceed),
                 )
             }
             Row(
-                modifier = modifier
+                modifier = Modifier
                     .padding(top = 32.dp)
 
             ) {
@@ -163,7 +189,7 @@ fun AuthorizationScreen(
                     tint = MaterialTheme.colorScheme.secondary
                 )
                 Text(
-                    text = "Восстановить пароль",
+                    text = stringResource(R.string.restore_password),
                     color = MaterialTheme.colorScheme.secondary,
 
                 )
@@ -171,10 +197,6 @@ fun AuthorizationScreen(
 
         }
     }
-
-
-
-}
 
 @Preview(
     showBackground = true,
@@ -184,7 +206,12 @@ fun AuthorizationScreen(
 fun AuthorizationScreenPreview() {
     AndroidBootcamp2026FrontendTheme {
         AuthorizationScreen(
-
+            enteredEmail = "test@mail.com",
+            OnBackButtonClick = {},
+            OnPasswordValueChange = {},
+            passwordValue = "",
+            ShowPasswordToggle = {},
+            showPassword = true
         )
     }
 }

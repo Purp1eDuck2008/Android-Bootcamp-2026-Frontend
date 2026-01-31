@@ -29,8 +29,6 @@ import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 @Composable
 fun ErrorStartScreen(
     modifier: Modifier = Modifier,
-    OnRegisterClick: () -> Unit,
-    OnLoginClick: () -> Unit
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
@@ -39,7 +37,7 @@ fun ErrorStartScreen(
         .fillMaxSize()
         .background(
             brush = Brush.linearGradient(
-                colors = listOf( //Заменить на значения из колор хмл
+                colors = listOf(
                     Color(color = 0xFF5B22BF),
                     Color(color = 0xFF7624AA)
                 )
@@ -82,9 +80,6 @@ fun ErrorStartScreen(
 fun ErrorStartScreen2Preview() {
     AndroidBootcamp2026FrontendTheme {
         ErrorStartScreen(
-            OnLoginClick = {},
-            OnRegisterClick = {}
-
         )
     }
 }
