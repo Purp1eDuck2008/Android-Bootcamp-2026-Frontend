@@ -1,162 +1,227 @@
 package ru.sicampus.bootcamp2026.ui.loginscreen
 
-import androidx.compose.foundation.Image
+
+import android.content.res.Configuration
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import ru.sicampus.bootcamp2026.R
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
 fun StartScreen(
     modifier: Modifier = Modifier,
-    people_for_startscreen: List<Int> = listOf(
-        R.drawable.people_start_1,
-        R.drawable.people_start_2,
-        R.drawable.people_start_3,
-        R.drawable.people_start_4,
-        R.drawable.people_start_5
-    ),
     OnRegisterClick: () -> Unit,
     OnLoginClick: () -> Unit
 ) {
-    Column(modifier = modifier
+    Box(modifier = modifier
         .fillMaxSize()
-        .background(MaterialTheme.colorScheme.background),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Spacer(modifier = Modifier.height(32.dp))
-        Icon (
-            painter = painterResource(R.drawable.logo_with_appname),
-            contentDescription = "Logo",
-            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
-        )
-        Spacer(modifier = Modifier.height(40.dp))
-        Row (verticalAlignment = Alignment.CenterVertically,
-             horizontalArrangement = Arrangement.Center
-        ){
-            people_for_startscreen.forEachIndexed{ index, i ->
-                Box(
-                    modifier = Modifier.size(64.dp).clip(CircleShape)
-                ) {
-                    Image(
-                        modifier = Modifier.fillMaxSize(),
-                        painter = painterResource(id = i),
-                        contentDescription = "people photo",
-                        contentScale = ContentScale.Crop
-                    )
-                }
-                if (index != people_for_startscreen.size - 1) {
-                    Spacer(modifier = Modifier.width(12.dp))
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(12.dp))
-        Text(
-            text = "Нам доверяют команды по всему миру",
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontWeight = FontWeight.Bold
-        )
-
-        /* это надо каким то образом выделить по центру между иконкой и фотками
-        Spacer(modifier = Modifier.height(64.dp))
-        Text(
-            text = "C нами встречи становятся легче!",
-            modifier = Modifier.width(360.dp),
-            textAlign = TextAlign.Center,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
-        )
-        */
-
-        //Нижние кнопки
-        Box(modifier = Modifier.fillMaxSize().size(200.dp))
-        {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_back),
-                contentDescription = null,
-                modifier = Modifier
-                    .width(360.dp)
-                    .height(360.dp)
-                    .align (Alignment.BottomCenter)
-                    .padding(bottom = 26.dp),
-                tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
+        .background(
+            brush = Brush.linearGradient(
+                colors = listOf( //Заменить на значения из колор хмл
+                    Color(color = 0xFF5B22BF),
+                    Color(color = 0xFF7624AA)
+                )
             )
+        ),
+    ) {
+        Column(modifier = Modifier
+            .align(Alignment.BottomCenter)
+            .clip(RoundedCornerShape(
+                topEnd = 32.dp,
+                topStart = 32.dp
+                )
+            )
+            .fillMaxWidth()
+            .height(500.dp)
+            .background(color = MaterialTheme.colorScheme.primary),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Icon(
+                modifier = Modifier.padding(top = 24.dp),
+                painter = painterResource(R.drawable.logo_with_appname),
+                contentDescription = "",
+                tint = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
+            )
+            OutlinedTextField(
+                value = "",
+                onValueChange = {},
+                modifier = Modifier
+                    .padding(
+                        top = 16.dp,
+                    )
+                    .width(320.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                label = {
+                    Text(
+                        text = "Введите ваш email",
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                    focusedLabelColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.secondary
+                ),
+                singleLine = true
+            )
+            Button(
+                onClick = { },
+                modifier = Modifier
+                    .padding(
+                        top = 8.dp,
+                    )
+                    .height(52.dp)
+                    .width(320.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondary
+                )
+            ) {
+                Text(
+                    text = "Продолжить",
+                )
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .width(320.dp)
+                    .padding(top = 12.dp)
+            ) {
+                Divider(
+                    modifier = Modifier.weight(1f),
+                    color = MaterialTheme.colorScheme.secondary
+                )
+                Text(
+                    text = "или",
+                    modifier = Modifier.padding(horizontal = 12.dp),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+                Divider(
+                    modifier = Modifier.weight(1f),
+                    color = MaterialTheme.colorScheme.secondary
+                )
+            }
 
             Button(
-                onClick = OnRegisterClick,
+                onClick = { },
                 modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(bottom = 92.dp)
-                        .width(360.dp)
-                        .height(52.dp),
+                    .padding(
+                        top = 16.dp,
+                    )
+                    .height(52.dp)
+                    .width(320.dp),
+                shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.onPrimary,
+                    contentColor = MaterialTheme.colorScheme.primary
                 )
             ) {
-                Text(
-                    text = "Зарегистрироваться"
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painterResource(R.drawable.ic_google),
+                        contentDescription = "",
+                        modifier = Modifier.size(24.dp),
+                        tint = Color.Unspecified
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Text(
+                        text = "Войти через Google",
+                    )
+                }
             }
-            Spacer(modifier = Modifier.height(8.dp))
-            Button(                                                // я бы сделал OutlinedButton или поменял цвет на
-                onClick = OnLoginClick,
+            Button(
+                onClick = { },
                 modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = 32.dp)
-                    .width(360.dp)
-                    .height(52.dp),
+                    .padding(
+                        top = 8.dp,
+                    )
+                    .height(52.dp)
+                    .width(320.dp),
+                shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant,  // тут можно surfaceVariant
-                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant            // а тут onSurfaceVariant
+                    containerColor = MaterialTheme.colorScheme.onPrimary,
+                    contentColor = MaterialTheme.colorScheme.primary
                 )
             ) {
-                Text(
-                    text = "Войти"
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painterResource(R.drawable.ic_apple),
+                        contentDescription = "",
+                        modifier = Modifier.size(24.dp),
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Text(
+                        text = "Войти через Apple",
+                    )
+                }
             }
+            Spacer(modifier = Modifier.padding(8.dp))
+            Text(
+                text = "Проблемы со входом?",
+                modifier = Modifier.padding(horizontal = 12.dp),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f)
+            )
+
+
+
         }
+
+
+
+
     }
 
 
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
 @Composable
-fun StartScreenPreview() {
+fun StartScreenPreview2() {
     AndroidBootcamp2026FrontendTheme {
         StartScreen(
             OnLoginClick = {},
             OnRegisterClick = {}
+
         )
     }
 }

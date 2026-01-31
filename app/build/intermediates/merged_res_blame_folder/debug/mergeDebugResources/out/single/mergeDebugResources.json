@@ -1,9 +1,5 @@
 [
     {
-        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_people_start_1.png.flat",
-        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/people_start_1.png"
-    },
-    {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_settings_circle.xml.flat",
         "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_settings_circle.xml"
     },
@@ -16,6 +12,14 @@
         "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_back.xml"
     },
     {
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_apple.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_apple.xml"
+    },
+    {
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_error.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_error.xml"
+    },
+    {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "ru.sicampus.bootcamp2026.app-main-6:/mipmap-hdpi/ic_launcher_round.webp"
     },
@@ -26,10 +30,6 @@
     {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_launcher_background.xml.flat",
         "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_launcher_background.xml"
-    },
-    {
-        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_people_start_3.png.flat",
-        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/people_start_3.png"
     },
     {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/mipmap-xxxhdpi_ic_launcher.webp.flat",
@@ -48,12 +48,12 @@
         "source": "ru.sicampus.bootcamp2026.app-main-6:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_people_start_5.png.flat",
-        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/people_start_5.png"
-    },
-    {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "ru.sicampus.bootcamp2026.app-main-6:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_backangel.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_backangel.xml"
     },
     {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -76,16 +76,16 @@
         "source": "ru.sicampus.bootcamp2026.app-main-6:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_people_start_2.png.flat",
-        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/people_start_2.png"
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_logo_with_hole.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/logo_with_hole.xml"
     },
     {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_launcher_foreground.xml.flat",
         "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_people_start_4.jpg.flat",
-        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/people_start_4.jpg"
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_google.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_google.xml"
     },
     {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/mipmap-hdpi_ic_launcher.webp.flat",

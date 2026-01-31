@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- startScreen -->
+    <color name="gradient_start_dark">#FFD201ED</color>
+    <color name="gradient_end_dark">#FF9103D8</color>
 </resources>

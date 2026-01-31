@@ -12,11 +12,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import ru.sicampus.bootcamp2026.ui.loginscreen.StartScreen
 import ru.sicampus.bootcamp2026.viewmodel.LoginViewModel
 import androidx.navigation.compose.composable
 import ru.sicampus.bootcamp2026.ui.loginscreen.AuthorizationScreen
-import ru.sicampus.bootcamp2026.ui.loginscreen.RegistrationScreen
+import ru.sicampus.bootcamp2026.ui.loginscreen.StartScreen
+
 
 enum class LoginScreenRoutes() {
     Start,
@@ -36,7 +36,7 @@ fun LoginScreen(
             startDestination = LoginScreenRoutes.Start.name,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(route = LoginScreenRoutes.Start.name){
+            /*composable(route = LoginScreenRoutes.Start.name){
                 StartScreen(
                     OnRegisterClick = {
                         navController.navigate(LoginScreenRoutes.Register.name)
@@ -45,9 +45,9 @@ fun LoginScreen(
                         navController.navigate(LoginScreenRoutes.Login.name)
                     }
                 )
-            }
+            }*/
 
-            composable(route = LoginScreenRoutes.Register.name){
+            /*composable(route = LoginScreenRoutes.Register.name){
                 RegistrationScreen(
                     loginValue = loginScreenState.regLogin,
                     passwordValue = loginScreenState.regPassword,
@@ -58,9 +58,9 @@ fun LoginScreen(
                         navController.navigate(LoginScreenRoutes.Login.name)
                     }
                 )
-            }
+            }*/
 
-            composable(route = LoginScreenRoutes.Login.name){
+            /*composable(route = LoginScreenRoutes.Login.name){
                 AuthorizationScreen(
                     loginValue = loginScreenState.authLogin,
                     passwordValue = loginScreenState.authPassword,
@@ -71,7 +71,7 @@ fun LoginScreen(
                         navController.navigate(LoginScreenRoutes.Register.name)
                     }
                 )
-            }
+            }*/
         }
     }
 }

@@ -1,13 +1,19 @@
 R_DEF: Internal format may change without notice
 local
 color black
+color gradient_end_dark
+color gradient_start_dark
 color purple_200
 color purple_500
 color purple_700
 color teal_200
 color teal_700
 color white
+drawable ic_apple
 drawable ic_back
+drawable ic_backangel
+drawable ic_error
+drawable ic_google
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_logo
@@ -15,11 +21,7 @@ drawable ic_profile_circle
 drawable ic_settings_circle
 drawable logo
 drawable logo_with_appname
-drawable people_start_1
-drawable people_start_2
-drawable people_start_3
-drawable people_start_4
-drawable people_start_5
+drawable logo_with_hole
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

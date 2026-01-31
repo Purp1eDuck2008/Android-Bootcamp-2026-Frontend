@@ -44,6 +44,8 @@ color androidx_core_secondary_text_default_material_light
 color black
 color call_notification_answer_color
 color call_notification_decline_color
+color gradient_end_dark
+color gradient_start_dark
 color notification_action_color_filter
 color notification_icon_bg_color
 color purple_200
@@ -76,13 +78,17 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+drawable ic_apple
 drawable ic_back
+drawable ic_backangel
 drawable ic_call_answer
 drawable ic_call_answer_low
 drawable ic_call_answer_video
 drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
+drawable ic_error
+drawable ic_google
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_logo
@@ -90,6 +96,7 @@ drawable ic_profile_circle
 drawable ic_settings_circle
 drawable logo
 drawable logo_with_appname
+drawable logo_with_hole
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -103,11 +110,6 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable people_start_1
-drawable people_start_2
-drawable people_start_3
-drawable people_start_4
-drawable people_start_5
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
