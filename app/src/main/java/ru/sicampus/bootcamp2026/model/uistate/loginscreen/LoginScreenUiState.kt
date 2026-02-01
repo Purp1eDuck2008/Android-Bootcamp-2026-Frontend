@@ -3,9 +3,15 @@ package ru.sicampus.bootcamp2026.model.uistate.loginscreen
 data class LoginScreenUiState (
     val authLogin: String = "",
     val authPassword: String = "",
+    val isAuthEmailValid: Boolean = false,
+
+    val regName: String = "",
     val regLogin: String = "",
-    val regPassword: String = "",
+    val firstRegPassword: String = "",
+    val secondRegPassword: String = "",
+    val isRegEmailValid: Boolean = false,
+
     val currentComposable: String = "login",
-    //val isLoginEmail: Boolean = false
-    val showLoginPassword: Boolean = false
+
+    val showPassword: Boolean = false
 )

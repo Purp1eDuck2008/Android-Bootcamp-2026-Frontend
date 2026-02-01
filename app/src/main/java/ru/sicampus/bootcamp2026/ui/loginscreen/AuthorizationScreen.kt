@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -54,10 +55,10 @@ fun AuthorizationScreen(
     showPassword: Boolean,
     ShowPasswordToggle: () -> Unit
 ) {
-
+    
         Column(
             modifier = Modifier
-                .imePadding()
+
                 .clip(
                     RoundedCornerShape(
                         topEnd = 32.dp,
@@ -65,7 +66,6 @@ fun AuthorizationScreen(
                     )
                 )
                 .fillMaxWidth()
-                .height(400.dp)
                 .background(color = MaterialTheme.colorScheme.primary),
             horizontalAlignment = Alignment.CenterHorizontally
         ){
@@ -191,7 +191,7 @@ fun AuthorizationScreen(
                 Text(
                     text = stringResource(R.string.restore_password),
                     color = MaterialTheme.colorScheme.secondary,
-
+                    modifier = Modifier.padding(bottom = 32.dp)
                 )
             }
 

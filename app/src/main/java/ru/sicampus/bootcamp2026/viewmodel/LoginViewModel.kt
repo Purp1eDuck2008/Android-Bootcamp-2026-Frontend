@@ -21,6 +21,14 @@ class LoginViewModel : ViewModel(){
         }
     }
 
+    fun OnAuthPasswordChange(password: String){
+        _uiState.update { currentState ->
+            currentState.copy(
+                authPassword = password
+            )
+        }
+    }
+
     fun OnLoginProceedButtonClick(){
         _uiState.update { uiState ->
             uiState.copy(
@@ -30,6 +38,7 @@ class LoginViewModel : ViewModel(){
     }
 
     fun OnLoginBackButtonClick(){
+        ClearState()
         _uiState.update { uiState ->
             uiState.copy(
                 currentComposable = "login"
@@ -37,19 +46,77 @@ class LoginViewModel : ViewModel(){
         }
     }
 
-    fun OnAuthPasswordChange(password: String){
-        _uiState.update { currentState ->
-            currentState.copy(
-                authPassword = password
+
+
+    fun TogglePasswordVidibility(){
+        _uiState.update { uiState ->
+            uiState.copy(
+                showPassword = !_uiState.value.showPassword
             )
         }
     }
 
-    fun ToggleLoginPasswordVidibility(){
+    fun OnRegisterClick(){
         _uiState.update { uiState ->
             uiState.copy(
-                showLoginPassword = !_uiState.value.showLoginPassword
+                currentComposable = "registration"
             )
+        }
+    }
+
+    fun OnNameValueChange(name: String){
+        _uiState.update { uiState ->
+            uiState.copy(
+                regName = name
+            )
+        }
+    }
+
+    fun OnLoginValueChange(login: String){
+        _uiState.update { uiState ->
+            uiState.copy(
+                regLogin = login
+            )
+        }
+    }
+
+    fun OnFirstRegPasswordChange(firstPassword: String){
+        _uiState.update { uiState ->
+            uiState.copy(
+                firstRegPassword = firstPassword
+            )
+        }
+    }
+
+    fun OnSecondRegPasswordChange(secondPassword: String){
+        _uiState.update { uiState ->
+            uiState.copy(
+                secondRegPassword = secondPassword
+            )
+        }
+    }
+
+    fun ValidateEmail(email: String): Boolean{
+        if (email.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    private fun ClearState(){
+        _uiState.update { uiState ->
+            uiState.copy(
+                authLogin = "",
+                authPassword = "",
+
+                regName = "",
+                regLogin = "",
+                firstRegPassword = "",
+                secondRegPassword = ""
+            )
+
         }
     }
 

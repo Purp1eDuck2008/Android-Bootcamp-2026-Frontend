@@ -15,4 +15,11 @@
     <string name="login_with_google">Войти через Google</string>
     <string name="login_with_apple">Войти Через Apple</string>
     <string name="login_issues">Проблемы со входом?</string>
+    <string name="no_account">Нет аккаунта?</string>
+    <string name="go_register">Регистрация</string>
+
+    <string name="registration">Регистрация</string>
+    <string name="displayed_name">Ваше имя и фамилия</string>
+    <string name="come_pu_with_password">Придумайте пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
 </resources>

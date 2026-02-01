@@ -3,6 +3,7 @@ package ru.sicampus.bootcamp2026.ui.loginscreen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,9 +33,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.sicampus.bootcamp2026.R
+import ru.sicampus.bootcamp2026.ui.loginscreen.components.EmailTextField
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
@@ -43,11 +47,12 @@ fun StartScreen(
     OnLoginValueChange: (String) -> Unit,
     OnProceedClick: () -> Unit,
     loginValue: String,
-    validateEmail: Boolean
+    validateEmail: Boolean,
+    OnRegisterClick: () -> Unit
 ) {
 
         Column(modifier = Modifier
-            .imePadding()
+
             .clip(
                 RoundedCornerShape(
                     topEnd = 32.dp,
@@ -65,30 +70,15 @@ fun StartScreen(
                 contentDescription = "",
                 tint = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f),
             )
-            OutlinedTextField(
-                value = loginValue,
-                onValueChange = {OnLoginValueChange(it)},
-                modifier = Modifier
-                    .padding(
-                        top = 16.dp,
-                    )
-                    .width(320.dp)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(16.dp),
-                label = {
-                    Text(
-                        text = stringResource(R.string.enter_mail),
-                        color = MaterialTheme.colorScheme.secondary
-                    )
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.secondary,
-                    unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
-                    focusedLabelColor = MaterialTheme.colorScheme.secondary,
-                    unfocusedLabelColor = MaterialTheme.colorScheme.secondary
-                ),
-                singleLine = true
+
+            EmailTextField(
+                loginValue = loginValue,
+                OnLoginValueChange = OnLoginValueChange,
+                label = stringResource(R.string.enter_mail),
+                imeAction = ImeAction.Next,
+                OnImeClicked = { OnProceedClick() }
             )
+
             Button(
                 onClick = { OnProceedClick() },
                 modifier = Modifier
@@ -134,7 +124,7 @@ fun StartScreen(
             }
 
             Button(
-                onClick = { OnProceedClick() },
+                onClick = {  },
                 modifier = Modifier
                     .padding(
                         top = 16.dp,
@@ -191,12 +181,33 @@ fun StartScreen(
                 }
             }
             Spacer(modifier = Modifier.padding(8.dp))
-            Text(
-                text = stringResource(R.string.login_issues),
-                modifier = Modifier.padding(horizontal = 12.dp),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f)
-            )
+
+            Row(
+                Modifier.padding(horizontal = 12.dp)
+            ){
+                Text(
+                    text = stringResource(R.string.no_account),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f)
+                )
+
+                Spacer(Modifier.width(8.dp))
+
+                Text(
+                    text = stringResource(R.string.go_register),
+                    modifier = Modifier.clickable(
+                        enabled = true,
+                        onClickLabel = null,
+                        onClick = {
+                            OnRegisterClick()
+                        }
+                    ),
+                    style = MaterialTheme.typography.bodyMedium,
+                    textDecoration = TextDecoration.Underline,
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f)
+                )
+            }
+
         }
 
 }
@@ -213,7 +224,8 @@ fun StartScreenPreview2() {
             OnLoginValueChange = { },
             loginValue = "",
             validateEmail = false,
-            OnProceedClick = {}
+            OnProceedClick = { },
+            OnRegisterClick = { }
         )
     }
 }
