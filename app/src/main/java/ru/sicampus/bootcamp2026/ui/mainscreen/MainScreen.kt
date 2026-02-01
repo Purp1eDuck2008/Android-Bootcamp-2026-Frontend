@@ -1,41 +1,37 @@
 package ru.sicampus.bootcamp2026.ui.mainscreen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.*
 import ru.sicampus.bootcamp2026.navigation.NavigationItem
-import ru.sicampus.bootcamp2026.navigation.MainScreens
+import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
+    val colorScheme = MaterialTheme.colorScheme
 
     val items = listOf(
-        NavigationItem.Home,
         NavigationItem.Profile,
+        NavigationItem.Home,
         NavigationItem.Settings
     )
 
     Scaffold(
         bottomBar = {
-            NavigationBar {
-                items.forEachIndexed { index, item ->
+            NavigationBar(
+                containerColor = colorScheme.background
+            ) {
+                items.forEach { item ->
                     val isSelected = currentRoute(navController) == item.route
 
                     NavigationBarItem(
-                        icon = { Icon(item.icon, contentDescription = null) },
-                        label = { Text(text = item.title) },
                         selected = isSelected,
                         onClick = {
                             navController.navigate(item.route) {
@@ -45,7 +41,23 @@ fun MainScreen() {
                                 launchSingleTop = true
                                 restoreState = true
                             }
-                        }
+                        },
+                        icon = {
+                            Icon(
+                                imageVector = item.icon,
+                                contentDescription = item.title
+                            )
+                        },
+                        label = {
+                            Text(text = item.title)
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = colorScheme.onPrimary,
+                            selectedTextColor = colorScheme.onPrimary,
+                            unselectedIconColor = colorScheme.onPrimary.copy(alpha = 0.7f),
+                            unselectedTextColor = colorScheme.onPrimary.copy(alpha = 0.7f),
+                            indicatorColor = colorScheme.background
+                        )
                     )
                 }
             }
@@ -69,8 +81,13 @@ fun currentRoute(navController: NavController): String? {
     return navBackStackEntry?.destination?.route
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
 @Composable
-fun PreviewMainScreen(){
-    MainScreen()
+fun PreviewMainScreen() {
+    AndroidBootcamp2026FrontendTheme() {
+        MainScreen()
+    }
 }

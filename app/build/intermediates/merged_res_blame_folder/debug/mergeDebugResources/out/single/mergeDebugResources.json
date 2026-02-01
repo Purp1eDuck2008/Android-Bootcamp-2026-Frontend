@@ -20,6 +20,10 @@
         "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_error.xml"
     },
     {
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_camera.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_camera.xml"
+    },
+    {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "ru.sicampus.bootcamp2026.app-main-6:/mipmap-hdpi/ic_launcher_round.webp"
     },
@@ -106,5 +110,13 @@
     {
         "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_logo.xml.flat",
         "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_logo.xml"
+    },
+    {
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_profile_scrap.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/profile_scrap.xml"
+    },
+    {
+        "merged": "ru.sicampus.bootcamp2026.app-debug-4:/drawable_ic_yandex.xml.flat",
+        "source": "ru.sicampus.bootcamp2026.app-main-6:/drawable/ic_yandex.xml"
     }
 ]

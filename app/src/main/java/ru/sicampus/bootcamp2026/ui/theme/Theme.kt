@@ -1,6 +1,5 @@
 package ru.sicampus.bootcamp2026.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -11,15 +10,14 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 
-private val DarkColorScheme = darkColorScheme(
+private val DarkColorScheme = darkColorScheme( //надо генерировать onSurface на основе цвета аватарки пользователя
     primary = Dark100,
     onPrimary = LightForDark,
     secondary = TextFieldForDark,
     onSecondary = Color(0xFF484848),
-    onSecondaryContainer = Color(0xFF282828)
-
+    onSecondaryContainer = Color(0xFF282828),
+    background =  Color(0xFF101010)
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -28,6 +26,7 @@ private val LightColorScheme = lightColorScheme(
     secondary = TextFieldForLight,
     onSecondary = Color(0xFFEDEDED),
     onSecondaryContainer = Color(0xFFC1C1C1),
+    background = Color(0xFFFFFFFF)
 )
 
 @Composable

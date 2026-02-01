@@ -115,6 +115,7 @@
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
     <string name="app_name">Planify</string>
+    <string name="authorization">Авторизация</string>
     <string name="autofill">Autofill</string>
     <string name="call_notification_answer_action">Answer</string>
     <string name="call_notification_answer_video_action">Video</string>
@@ -125,11 +126,18 @@
     <string name="call_notification_screening_text">Screening an incoming call</string>
     <string name="close_drawer">"Close navigation menu"</string>
     <string name="close_sheet">"Close sheet"</string>
+    <string name="come_pu_with_password">Придумайте пароль</string>
     <string name="default_error_message">"Invalid input"</string>
     <string name="default_popup_window_title" ns1:ignore="ExtraTranslation">"Pop-Up Window"</string>
+    <string name="displayed_name">Ваше имя и фамилия</string>
     <string name="dropdown_menu">"Dropdown menu"</string>
+    <string name="enter_mail">Введите ваш email</string>
+    <string name="go_register">Регистрация</string>
     <string name="in_progress">In progress</string>
     <string name="indeterminate">Partially checked</string>
+    <string name="login_issues">Проблемы со входом?</string>
+    <string name="login_with_apple">Войти Через Apple</string>
+    <string name="login_with_google">Войти через Google</string>
     <string name="m3c_bottom_sheet_collapse_description">Collapse bottom sheet</string>
     <string name="m3c_bottom_sheet_dismiss_description">Dismiss bottom sheet</string>
     <string name="m3c_bottom_sheet_drag_handle_description">Drag handle</string>
@@ -174,10 +182,15 @@
     <string name="m3c_dropdown_menu_collapsed">Collapsed</string>
     <string name="m3c_dropdown_menu_expanded">Expanded</string>
     <string name="m3c_dropdown_menu_toggle">Toggle dropdown menu</string>
+    <string name="m3c_floating_toolbar_collapse">Collapse toolbar</string>
+    <string name="m3c_floating_toolbar_expand">Expand toolbar</string>
     <string name="m3c_search_bar_search">Search</string>
     <string name="m3c_snackbar_dismiss">Dismiss</string>
+    <string name="m3c_snackbar_pane_title">Alert</string>
     <string name="m3c_suggestions_available">Suggestions below</string>
+    <string name="m3c_time_input_dialog_title">Enter Time</string>
     <string name="m3c_time_picker_am">AM</string>
+    <string name="m3c_time_picker_dialog_title">Select Time</string>
     <string name="m3c_time_picker_hour">Hour</string>
     <string name="m3c_time_picker_hour_24h_suffix">%1$d hours</string>
     <string name="m3c_time_picker_hour_selection">Select hour</string>
@@ -189,12 +202,24 @@
     <string name="m3c_time_picker_minute_text_field">for minutes</string>
     <string name="m3c_time_picker_period_toggle_description">Select AM or PM</string>
     <string name="m3c_time_picker_pm">PM</string>
+    <string name="m3c_time_picker_toggle_keyboard">Switch to text input mode for the time input</string>
+    <string name="m3c_time_picker_toggle_touch">Switch to clock mode for the time input</string>
     <string name="m3c_tooltip_long_press_label">Show tooltip</string>
     <string name="m3c_tooltip_pane_description">Tooltip</string>
+    <string name="m3c_wide_navigation_rail_close_rail">"Close rail"</string>
+    <string name="m3c_wide_navigation_rail_pane_title">"Navigation rail"</string>
     <string name="navigation_menu">"Navigation menu"</string>
+    <string name="no_account">Нет аккаунта?</string>
     <string name="not_selected">Not selected</string>
+    <string name="or">или</string>
+    <string name="password">Пароль</string>
+    <string name="proceed">Продолжить</string>
     <string name="range_end">"Range end"</string>
     <string name="range_start">"Range start"</string>
+    <string name="registration">Регистрация</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="restore_password">Восстановить пароль</string>
+    <string name="sample_email">your@mail.com</string>
     <string name="selected">Selected</string>
     <string name="snackbar_pane_title">Alert</string>
     <string name="state_empty">Empty</string>
@@ -210,6 +235,7 @@
         <item name="android:windowClipToOutline">false</item>
     </style>
     <style name="EdgeToEdgeFloatingDialogTheme" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowLayoutInDisplayCutoutMode" ns1:targetApi="27">@integer/m3c_window_layout_in_display_cutout_mode</item>
         <item name="android:windowClipToOutline">false</item>
         <item name="android:windowIsFloating">false</item>

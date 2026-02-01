@@ -10,5 +10,21 @@
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Planify</string>
+    <string name="authorization">Авторизация</string>
+    <string name="come_pu_with_password">Придумайте пароль</string>
+    <string name="displayed_name">Ваше имя и фамилия</string>
+    <string name="enter_mail">Введите ваш email</string>
+    <string name="go_register">Регистрация</string>
+    <string name="login_issues">Проблемы со входом?</string>
+    <string name="login_with_apple">Войти Через Apple</string>
+    <string name="login_with_google">Войти через Google</string>
+    <string name="no_account">Нет аккаунта?</string>
+    <string name="or">или</string>
+    <string name="password">Пароль</string>
+    <string name="proceed">Продолжить</string>
+    <string name="registration">Регистрация</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="restore_password">Восстановить пароль</string>
+    <string name="sample_email">your@mail.com</string>
     <style name="Theme.AndroidBootcamp2026Frontend" parent="android:Theme.Material.Light.NoActionBar"/>
 </resources>
