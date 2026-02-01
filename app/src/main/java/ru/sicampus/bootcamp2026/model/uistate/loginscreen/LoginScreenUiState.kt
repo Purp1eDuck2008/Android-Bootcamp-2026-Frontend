@@ -13,5 +13,7 @@ data class LoginScreenUiState (
 
     val currentComposable: String = "login",
 
-    val showPassword: Boolean = false
+    val showPassword: Boolean = false,
+
+    val isLoggedIn: Boolean = false
 )

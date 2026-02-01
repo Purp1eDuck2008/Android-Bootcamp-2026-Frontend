@@ -53,7 +53,8 @@ fun AuthorizationScreen(
     OnPasswordValueChange:(String) -> Unit,
     passwordValue: String,
     showPassword: Boolean,
-    ShowPasswordToggle: () -> Unit
+    ShowPasswordToggle: () -> Unit,
+    onProceedClick: () -> Unit
 ) {
     
         Column(
@@ -158,7 +159,7 @@ fun AuthorizationScreen(
                 }
             )
             Button(
-                onClick = { },
+                onClick = { onProceedClick() },
                 modifier = Modifier
                     .padding(
                         top = 16.dp,
@@ -211,7 +212,8 @@ fun AuthorizationScreenPreview() {
             OnPasswordValueChange = {},
             passwordValue = "",
             ShowPasswordToggle = {},
-            showPassword = true
+            showPassword = true,
+            onProceedClick = {}
         )
     }
 }

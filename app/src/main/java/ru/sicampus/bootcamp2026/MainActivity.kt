@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import ru.sicampus.bootcamp2026.ui.LoginScreen
+import ru.sicampus.bootcamp2026.navigation.RootNavigation
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AndroidBootcamp2026FrontendTheme {
-                LoginScreen()
+                RootNavigation()
             }
         }
     }

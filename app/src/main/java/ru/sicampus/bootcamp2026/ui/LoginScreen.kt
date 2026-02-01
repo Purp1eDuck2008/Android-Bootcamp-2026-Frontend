@@ -1,25 +1,12 @@
 package ru.sicampus.bootcamp2026.ui
 
 import android.content.res.Configuration
-import android.util.Patterns
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.OverscrollEffect
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.exclude
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,7 +18,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ru.sicampus.bootcamp2026.viewmodel.LoginViewModel
 import ru.sicampus.bootcamp2026.ui.loginscreen.AuthorizationScreen
@@ -41,10 +27,18 @@ import ru.sicampus.bootcamp2026.ui.loginscreen.StartScreen
 
 @Composable
 fun LoginScreen(
-    loginViewModel: LoginViewModel = viewModel()
+    loginViewModel: LoginViewModel = viewModel(),
+    onSuccessfulLogin: () -> Unit = {}
 ) {
     val loginScreenState by loginViewModel.uiState.collectAsState()
     val focusManager = LocalFocusManager.current
+
+    // Проверяем, успешно ли вошел пользователь, и вызываем коллбэк
+    if (loginScreenState.isLoggedIn) {
+        onSuccessfulLogin()
+        return
+    }
+
     BackHandler(
         enabled = loginScreenState.currentComposable == "password" || loginScreenState.currentComposable == "registration"
     ) {
@@ -85,7 +79,12 @@ fun LoginScreen(
                     OnPasswordValueChange = { loginViewModel.OnAuthPasswordChange(it) },
                     passwordValue = loginScreenState.authPassword,
                     ShowPasswordToggle = { loginViewModel.TogglePasswordVidibility() },
-                    showPassword = loginScreenState.showPassword
+                    showPassword = loginScreenState.showPassword,
+                    onProceedClick = {
+                        if (loginViewModel.authenticateUser()) {
+                            loginViewModel.OnLoginSuccess()
+                        }
+                    }
                 )
             }
 

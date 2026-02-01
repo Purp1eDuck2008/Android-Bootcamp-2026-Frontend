@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import ru.sicampus.bootcamp2026.data.userList
 import ru.sicampus.bootcamp2026.model.uistate.loginscreen.LoginScreenUiState
 
 class LoginViewModel : ViewModel(){
@@ -105,6 +106,25 @@ class LoginViewModel : ViewModel(){
         }
     }
 
+    fun authenticateUser(): Boolean {
+        val currentUserEmail = _uiState.value.authLogin
+        val currentUserPassword = _uiState.value.authPassword
+
+        val authenticatedUser = userList.find { user ->
+            user.email == currentUserEmail && user.password == currentUserPassword
+        }
+
+        return authenticatedUser != null
+    }
+
+    fun OnLoginSuccess() {
+        _uiState.update { uiState ->
+            uiState.copy(
+                isLoggedIn = true
+            )
+        }
+    }
+
     private fun ClearState(){
         _uiState.update { uiState ->
             uiState.copy(
@@ -114,7 +134,8 @@ class LoginViewModel : ViewModel(){
                 regName = "",
                 regLogin = "",
                 firstRegPassword = "",
-                secondRegPassword = ""
+                secondRegPassword = "",
+                isLoggedIn = false
             )
 
         }

@@ -9,7 +9,6 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.R
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -28,9 +27,7 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = DarkForLight,
     secondary = TextFieldForLight,
     onSecondary = Color(0xFFEDEDED),
-    onSecondaryContainer = Color(0xFFC1C1C1)
-
-
+    onSecondaryContainer = Color(0xFFC1C1C1),
 )
 
 @Composable
