@@ -6,7 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import ru.sicampus.bootcamp2026.ui.LoginScreen
-import ru.sicampus.bootcamp2026.ui.mainscreen.MainScreen
+import ru.sicampus.bootcamp2026.ui.MainScreen
 
 @Composable
 fun RootNavigation() {
