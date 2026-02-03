@@ -1,4 +1,4 @@
-package ru.sicampus.bootcamp2026.ui.mainscreen
+package ru.sicampus.bootcamp2026.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
@@ -10,6 +10,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.*
 import ru.sicampus.bootcamp2026.navigation.NavigationItem
+import ru.sicampus.bootcamp2026.ui.mainscreen.HomeScreen
+import ru.sicampus.bootcamp2026.ui.mainscreen.ProfileScreen
+import ru.sicampus.bootcamp2026.ui.mainscreen.SettingsScreen
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
@@ -24,6 +27,7 @@ fun MainScreen() {
     )
 
     Scaffold(
+        
         bottomBar = {
             NavigationBar(
                 containerColor = colorScheme.background
