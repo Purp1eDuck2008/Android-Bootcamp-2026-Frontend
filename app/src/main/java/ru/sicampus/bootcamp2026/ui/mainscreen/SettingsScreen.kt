@@ -50,7 +50,7 @@ fun SettingsScreen() {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(vertical = 32.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(20){
                 Column(
@@ -100,7 +100,7 @@ fun SettingsScreen() {
                                     .padding(
                                         top = 16.dp,
                                     )
-                                    .height(32.dp)
+                                    .height(36.dp)
                                     .width(160.dp),
                                 shape = RoundedCornerShape(16.dp),
                                 enabled = false,
@@ -108,7 +108,7 @@ fun SettingsScreen() {
                                     containerColor = MaterialTheme.colorScheme.onPrimary,
                                     contentColor = MaterialTheme.colorScheme.primary,
                                     disabledContainerColor = MaterialTheme.colorScheme.onPrimary.copy(
-                                        alpha = 0.7f
+                                        alpha = 0.5f
                                     ),
                                     disabledContentColor = MaterialTheme.colorScheme.primary
                                 )
@@ -123,7 +123,7 @@ fun SettingsScreen() {
                                     .padding(
                                         top = 16.dp,
                                     )
-                                    .height(32.dp)
+                                    .height(36.dp)
                                     .width(160.dp),
                                 shape = RoundedCornerShape(16.dp),
                                 enabled = false,

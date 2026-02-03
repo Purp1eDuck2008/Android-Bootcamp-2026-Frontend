@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BorderColor
 import androidx.compose.material.icons.filled.ExitToApp
@@ -262,66 +263,60 @@ fun ProfileScreen() {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 4.dp), // отступ от нижнего края
+                    .padding(bottom = 16.dp),
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Button(
-                    onClick = {},
+                Row(
                     modifier = Modifier
-                        .offset(0.dp)
-                        .padding(
-                            top = 32.dp,
-                        )
-                        .height(52.dp)
-                        .width(340.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    enabled = false,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.onPrimary,
-                        contentColor = MaterialTheme.colorScheme.primary,
-                        disabledContainerColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                        disabledContentColor = MaterialTheme.colorScheme.onSecondary
-                    )
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Text(
-                        text = "Сохранить"
-                    )
-                }
-                Button(
-                    onClick = {},
-                    modifier = Modifier
-                        .offset(0.dp)
-                        .padding(
-                            top = 16.dp,
+                    Button(
+                        onClick = {},
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(52.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.6f),
+                            contentColor = MaterialTheme.colorScheme.error
                         )
-                        .height(52.dp)
-                        .width(340.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    enabled = false,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.onPrimary,
-                        contentColor = MaterialTheme.colorScheme.primary,
-                        disabledContainerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.6f),
-                        disabledContentColor = MaterialTheme.colorScheme.error
-                    )
-                ) {
-                    Row() {
-                        Icon(
-                            imageVector = Icons.Default.ExitToApp,
-                            contentDescription = "",
-                            modifier = Modifier
-                                .padding(end = 6.dp)
-                                .offset(y = -2.dp)
-                                .rotate(180f)
-
+                    ) {
+                        Row (
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                imageVector = Icons.Default.ExitToApp,
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .padding(end = 6.dp)
+                                    .offset(y = -2.dp)
+                                    .rotate(180f)
+                            )
+                            Text(text = "Выйти")
+                        }
+                    }
+                    Button(
+                        onClick = {},
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(52.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        enabled = false,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.onPrimary,
+                            contentColor = MaterialTheme.colorScheme.primary,
+                            disabledContainerColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                            disabledContentColor = MaterialTheme.colorScheme.onSecondary
                         )
-                        Text(
-                            text = "Выйти из аккаунта",
-                        )
+                    ) {
+                        Text(text = "Сохранить")
                     }
                 }
             }
+
         }
     }
 }

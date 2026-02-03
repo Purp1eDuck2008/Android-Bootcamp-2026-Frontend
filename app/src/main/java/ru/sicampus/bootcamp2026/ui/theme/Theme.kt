@@ -17,7 +17,9 @@ private val DarkColorScheme = darkColorScheme( //надо генерироват
     secondary = TextFieldForDark,
     onSecondary = Color(0xFF484848),
     onSecondaryContainer = Color(0xFF282828),
-    background =  Color(0xFF101010)
+    background =  Color(0xFF101010),
+    surfaceContainerHigh = Color(0xFF9122C0),
+    surfaceContainerLow = Color(0xFF571FBA),
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -26,7 +28,9 @@ private val LightColorScheme = lightColorScheme(
     secondary = TextFieldForLight,
     onSecondary = Color(0xFFEDEDED),
     onSecondaryContainer = Color(0xFFC1C1C1),
-    background = Color(0xFFFFFFFF)
+    background = Color(0xFFFFFFFF),
+    surfaceContainerHigh = Color(0xFFD0E0F7),
+    surfaceContainerLow = Color(0xFFCFD6F3),
 )
 
 @Composable

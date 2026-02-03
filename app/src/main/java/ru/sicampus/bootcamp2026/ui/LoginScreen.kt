@@ -53,8 +53,9 @@ fun LoginScreen(
             .imePadding()
             .background(
                 Brush.linearGradient(
-                    listOf(Color(0xFF5B22BF),
-                        Color(0xFF7624AA)
+                    listOf(
+                        MaterialTheme.colorScheme.surfaceContainerHigh,
+                        MaterialTheme.colorScheme.surfaceContainerLow
                     )
                 )
             ),

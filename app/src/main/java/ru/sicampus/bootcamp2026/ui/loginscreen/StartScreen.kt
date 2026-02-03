@@ -168,7 +168,7 @@ fun StartScreen(
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Text(
-                        text = "Войти через Yandex"
+                        text = "Войти через Яндекс"
                     )
                 }
             }
