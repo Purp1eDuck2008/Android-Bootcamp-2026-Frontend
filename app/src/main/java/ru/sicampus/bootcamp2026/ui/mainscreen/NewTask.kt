@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -68,28 +69,95 @@ fun newTask() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Column {
-                Text(
-                    text = "Название встречи:",
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.padding(start = 16.dp)
+                Spacer(modifier = Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = "",
+                    onValueChange = {},
+                    modifier = Modifier
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp
+                        )
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    label = {
+                        Text(
+                            text = "Название встречи",
+                            color = MaterialTheme.colorScheme.secondary
+                        )
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                        focusedLabelColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedLabelColor = MaterialTheme.colorScheme.secondary
+                    ),
+                    singleLine = true,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                Box(
+                OutlinedTextField(
+                    value = "",
+                    onValueChange = {},
+                    shape = RoundedCornerShape(16.dp),
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .height(48.dp)
-                        .border(
-                            width = 1.dp,
-                            color = MaterialTheme.colorScheme.outline,
-                            shape = RoundedCornerShape(12.dp)
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp
                         )
+                        .fillMaxWidth(),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                        focusedLabelColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedLabelColor = MaterialTheme.colorScheme.secondary
+                    ),
+                    label = {
+                        Text(
+                            text = "Описание"
+                        )
+                    }
                 )
+                Spacer(modifier = Modifier.height(8.dp))
+                Row(
+                    verticalAlignment =Alignment.CenterVertically
+                ){
+                    OutlinedTextField(
+                    value = "",
+                    onValueChange = {},
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp
+                        )
+                        .fillMaxWidth(),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                        focusedLabelColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedLabelColor = MaterialTheme.colorScheme.secondary
+                    ),
+                    label = {
+                        Text(
+                            text = "Время и дата"
+                        )
+                    }
+                )
+                    Icon(
+                        imageVector = Icons.Default.CalendarMonth,
+                        contentDescription = "",
+                        tint = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
+                        modifier = Modifier
+                            .padding(end = 16.dp, top = 12.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
 
-            Column {
+                /*Column {
                 Text(
                     text = "Описание встречи:",
                     color = MaterialTheme.colorScheme.onPrimary,
@@ -142,11 +210,13 @@ fun newTask() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+                 */
+
+            Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = "Участники встречи:",
-                color = MaterialTheme.colorScheme.onPrimary,
+                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f),
                 modifier = Modifier.padding(start = 16.dp),
                 fontWeight = FontWeight.SemiBold
             )
@@ -156,26 +226,31 @@ fun newTask() {
             OutlinedTextField(
                 value = "",
                 onValueChange = {},
-                placeholder = { Text("Поиск пользователя") },
+                label = {
+                    Text(
+                        text = "Поиск пользователей",
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = ""
+                        contentDescription = "",
+                        tint = MaterialTheme.colorScheme.secondary
                     )
                 },
-                singleLine = true,
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.outline,
-                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedBorderColor = MaterialTheme.colorScheme.onPrimary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
                     focusedTextColor = MaterialTheme.colorScheme.onPrimary,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onPrimary
+                    unfocusedTextColor = MaterialTheme.colorScheme.secondary
                 )
             )
-
+            Spacer(modifier = Modifier.height(12.dp))
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(vertical = 16.dp)
@@ -203,7 +278,7 @@ fun newTask() {
                                 text = "Казак Дмитрий Владимирович",
                                 style = MaterialTheme.typography.bodyLarge,
                                 fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onPrimary,
+                                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f), //если добавлен в список становить onPrimary
                                 modifier = Modifier.weight(1f)
                             )
 
@@ -213,8 +288,8 @@ fun newTask() {
                                 contentPadding = PaddingValues(0.dp),
                                 modifier = Modifier.size(36.dp),
                                 colors = ButtonDefaults.buttonColors(
-                                    containerColor = MaterialTheme.colorScheme.onPrimary,
-                                    contentColor = MaterialTheme.colorScheme.primary
+                                    containerColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
+                                    contentColor = MaterialTheme.colorScheme.onPrimary
                                 )
                             ) {
                                 Icon(
@@ -230,7 +305,6 @@ fun newTask() {
                 }
             }
         }
-
         Button(
             onClick = {},
             modifier = Modifier
@@ -240,7 +314,7 @@ fun newTask() {
                 .height(48.dp),
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.onPrimary,
+                containerColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
                 contentColor = MaterialTheme.colorScheme.primary
             )
         ) {

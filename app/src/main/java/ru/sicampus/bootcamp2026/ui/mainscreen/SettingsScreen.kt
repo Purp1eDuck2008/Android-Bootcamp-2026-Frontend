@@ -107,10 +107,8 @@ fun SettingsScreen() {
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = MaterialTheme.colorScheme.onPrimary,
                                     contentColor = MaterialTheme.colorScheme.primary,
-                                    disabledContainerColor = MaterialTheme.colorScheme.onPrimary.copy(
-                                        alpha = 0.5f
-                                    ),
-                                    disabledContentColor = MaterialTheme.colorScheme.primary
+                                    disabledContainerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.7f),
+                                    disabledContentColor = MaterialTheme.colorScheme.error
                                 )
                             ) {
                                 Text(
@@ -128,12 +126,13 @@ fun SettingsScreen() {
                                 shape = RoundedCornerShape(16.dp),
                                 enabled = false,
                                 colors = ButtonDefaults.buttonColors(
-                                    containerColor = MaterialTheme.colorScheme.onPrimary,
-                                    contentColor = MaterialTheme.colorScheme.primary,
-                                    disabledContainerColor = MaterialTheme.colorScheme.onPrimary.copy(
-                                        alpha = 1.1f
-                                    ),
-                                    disabledContentColor = MaterialTheme.colorScheme.primary
+                                    containerColor = Color(0xFF4CAF50),
+                                    contentColor = Color.White,
+                                    disabledContainerColor = Color(0xFF4CAF50)
+                                        .copy(alpha = 0.4f),
+                                    disabledContentColor = Color.White.copy(
+                                        alpha = 0.6f
+                                    )
                                 )
                             ) {
                                 Text(
