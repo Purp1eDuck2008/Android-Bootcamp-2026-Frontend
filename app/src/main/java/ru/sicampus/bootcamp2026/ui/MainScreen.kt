@@ -1,11 +1,14 @@
 package ru.sicampus.bootcamp2026.ui
 
 import android.content.res.Configuration
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.*
@@ -27,10 +30,22 @@ fun MainScreen() {
     )
 
     Scaffold(
-        
         bottomBar = {
+            Surface(
+                shape = RoundedCornerShape(
+                    topStart = 24.dp,
+                    topEnd = 24.dp,
+                    bottomStart = 0.dp,
+                    bottomEnd = 0.dp
+                ),
+                border = BorderStroke(
+                    width = 1.dp,
+                    color = colorScheme.secondary.copy(alpha = 0.7f)
+                ),
+                modifier = Modifier.offset(y = 1.dp)
+            ) {
             NavigationBar(
-                containerColor = colorScheme.background
+                containerColor = colorScheme.primary
             ) {
                 items.forEach { item ->
                     val isSelected = currentRoute(navController) == item.route
@@ -48,21 +63,20 @@ fun MainScreen() {
                         },
                         icon = {
                             Icon(
+                                modifier = Modifier.size(28.dp),
                                 imageVector = item.icon,
                                 contentDescription = item.title
                             )
-                        },
-                        label = {
-                            Text(text = item.title)
                         },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = colorScheme.onPrimary,
                             selectedTextColor = colorScheme.onPrimary,
                             unselectedIconColor = colorScheme.onPrimary.copy(alpha = 0.7f),
                             unselectedTextColor = colorScheme.onPrimary.copy(alpha = 0.7f),
-                            indicatorColor = colorScheme.background
+                            indicatorColor = colorScheme.primary
                         )
                     )
+                    }
                 }
             }
         }

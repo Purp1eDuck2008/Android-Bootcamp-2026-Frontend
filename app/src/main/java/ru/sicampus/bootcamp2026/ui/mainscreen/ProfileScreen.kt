@@ -207,10 +207,7 @@ fun ProfileScreen() {
                 )
                 Icon(
                     modifier = Modifier
-                        .padding(
-                            top = 24.dp,
-                            start = 16.dp
-                        )
+                        .padding(start = 16.dp)
                         .size(24.dp),
                     imageVector = Icons.Default.BorderColor,
                     contentDescription = "",
@@ -269,7 +266,7 @@ fun ProfileScreen() {
             ) {
                 Row(
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
+                        .padding(horizontal = 12.dp)
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {

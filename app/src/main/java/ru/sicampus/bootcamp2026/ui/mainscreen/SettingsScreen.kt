@@ -105,11 +105,15 @@ fun SettingsScreen() {
                                 shape = RoundedCornerShape(16.dp),
                                 enabled = false,
                                 colors = ButtonDefaults.buttonColors(
-                                    containerColor = MaterialTheme.colorScheme.onPrimary,
-                                    contentColor = MaterialTheme.colorScheme.primary,
-                                    disabledContainerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.7f),
-                                    disabledContentColor = MaterialTheme.colorScheme.error
+                                    containerColor = Color(0xFFFF5252),
+                                    contentColor = Color.White,
+                                    disabledContainerColor = Color(0xFFFF5252)
+                                        .copy(alpha = 0.45f),
+                                    disabledContentColor = Color.White.copy(
+                                        alpha = 0.7f
+                                    )
                                 )
+
                             ) {
                                 Text(
                                     text = "Отказать"
@@ -126,12 +130,12 @@ fun SettingsScreen() {
                                 shape = RoundedCornerShape(16.dp),
                                 enabled = false,
                                 colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color(0xFF4CAF50),
+                                    containerColor = Color(0xFF00C853),
                                     contentColor = Color.White,
-                                    disabledContainerColor = Color(0xFF4CAF50)
-                                        .copy(alpha = 0.4f),
+                                    disabledContainerColor = Color(0xFF00C853)
+                                        .copy(alpha = 0.45f),
                                     disabledContentColor = Color.White.copy(
-                                        alpha = 0.6f
+                                        alpha = 0.7f
                                     )
                                 )
                             ) {

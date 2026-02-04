@@ -20,6 +20,7 @@ private val DarkColorScheme = darkColorScheme( //надо генерироват
     background =  Color(0xFF101010),
     surfaceContainerHigh = Color(0xFF9122C0),
     surfaceContainerLow = Color(0xFF571FBA),
+    surfaceDim = Color(0xFF000000)
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -31,6 +32,7 @@ private val LightColorScheme = lightColorScheme(
     background = Color(0xFFFFFFFF),
     surfaceContainerHigh = Color(0xFFD0E0F7),
     surfaceContainerLow = Color(0xFFCFD6F3),
+    surfaceDim = Color(0xFFFFFFFF)
 )
 
 @Composable
