@@ -1,18 +1,17 @@
 package ru.sicampus.bootcamp2026.viewmodel
 
 import android.util.Patterns
-import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import ru.sicampus.bootcamp2026.data.userList
-import ru.sicampus.bootcamp2026.model.uistate.loginscreen.LoginScreenUiState
+import ru.sicampus.bootcamp2026.model.uistate.loginscreen.LoginScreenState
 
 class LoginViewModel : ViewModel(){
-    private val _uiState = MutableStateFlow(LoginScreenUiState())
-    val uiState: StateFlow<LoginScreenUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(LoginScreenState())
+    val uiState: StateFlow<LoginScreenState> = _uiState.asStateFlow()
 
     fun OnAuthLoginChange(login: String){
         _uiState.update { currentState ->

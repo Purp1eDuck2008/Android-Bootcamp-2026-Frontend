@@ -14,6 +14,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.*
 import ru.sicampus.bootcamp2026.navigation.NavigationItem
 import ru.sicampus.bootcamp2026.ui.mainscreen.HomeScreen
+import ru.sicampus.bootcamp2026.ui.mainscreen.NewTask
 import ru.sicampus.bootcamp2026.ui.mainscreen.ProfileScreen
 import ru.sicampus.bootcamp2026.ui.mainscreen.SettingsScreen
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
@@ -88,7 +89,7 @@ fun MainScreen() {
         ) {
             composable(NavigationItem.Home.route) { HomeScreen() }
             composable(NavigationItem.Profile.route) { ProfileScreen() }
-            composable(NavigationItem.Settings.route) { SettingsScreen() }
+            composable(NavigationItem.Settings.route) { NewTask() }
         }
     }
 }

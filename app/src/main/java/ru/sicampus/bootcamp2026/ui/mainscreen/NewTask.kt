@@ -23,10 +23,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.sicampus.bootcamp2026.R
+import ru.sicampus.bootcamp2026.data.User
+import ru.sicampus.bootcamp2026.ui.mainscreen.components.ListComponent
+import ru.sicampus.bootcamp2026.ui.mainscreen.components.UserRow
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
-fun newTask() {
+fun NewTask() {
 
     Box(
         modifier = Modifier
@@ -212,7 +215,7 @@ fun newTask() {
 
                  */
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
                 text = "Участники встречи:",
@@ -221,7 +224,7 @@ fun newTask() {
                 fontWeight = FontWeight.SemiBold
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             OutlinedTextField(
                 value = "",
@@ -251,59 +254,7 @@ fun newTask() {
                 )
             )
             Spacer(modifier = Modifier.height(12.dp))
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(vertical = 16.dp)
-            ) {
-                items(20) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(horizontal = 16.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.profile_scrap),
-                                contentDescription = null,
-                                tint = Color.Unspecified,
-                                modifier = Modifier
-                                    .size(48.dp)
-                                    .clip(RoundedCornerShape(64.dp))
-                            )
-
-                            Spacer(modifier = Modifier.width(12.dp))
-
-                            Text(
-                                text = "Казак Дмитрий Владимирович",
-                                style = MaterialTheme.typography.bodyLarge,
-                                fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f), //если добавлен в список становить onPrimary
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            Button( // "+" на плюс меняется, и делаем кнопку более серой, добавленного пользователя вверх по списку
-                                onClick = {},
-                                shape = RoundedCornerShape(8.dp),
-                                contentPadding = PaddingValues(0.dp),
-                                modifier = Modifier.size(36.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
-                                    contentColor = MaterialTheme.colorScheme.onPrimary
-                                )
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Add,
-                                    contentDescription = "",
-                                    tint = MaterialTheme.colorScheme.primary,
-                                    modifier = Modifier.size(26.dp)
-                                )
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(24.dp))
-                    }
-                }
-            }
+            ListComponent()
         }
         Button(
             onClick = {},
@@ -334,6 +285,6 @@ fun newTask() {
 @Composable
 fun previewNewTask() {
     AndroidBootcamp2026FrontendTheme {
-        newTask()
+        NewTask()
     }
 }

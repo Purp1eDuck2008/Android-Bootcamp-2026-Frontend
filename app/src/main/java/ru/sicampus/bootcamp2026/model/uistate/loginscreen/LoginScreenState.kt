@@ -1,6 +1,6 @@
 package ru.sicampus.bootcamp2026.model.uistate.loginscreen
 
-data class LoginScreenUiState (
+data class LoginScreenState (
     val authLogin: String = "",
     val authPassword: String = "",
     val isAuthEmailValid: Boolean = false,
