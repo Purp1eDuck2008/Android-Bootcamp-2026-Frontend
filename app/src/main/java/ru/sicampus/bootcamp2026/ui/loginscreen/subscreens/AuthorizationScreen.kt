@@ -1,14 +1,17 @@
-package ru.sicampus.bootcamp2026.ui.loginscreen
+package ru.sicampus.bootcamp2026.ui.loginscreen.subscreens
 
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -30,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -45,15 +49,35 @@ import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 @Composable
 fun AuthorizationScreen(
     modifier: Modifier = Modifier,
+    isError: Boolean,
+    error: String?,
     enteredEmail: String,
     OnBackButtonClick:() -> Unit,
     OnPasswordValueChange:(String) -> Unit,
     passwordValue: String,
     showPassword: Boolean,
     ShowPasswordToggle: () -> Unit,
-    onProceedClick: () -> Unit
+    onProceedClick: () -> Unit,
+    isEnabledSend: Boolean
 ) {
-    
+
+    Column(
+        modifier = Modifier.Companion
+            .background(color = MaterialTheme.colorScheme.primary)
+            .fillMaxSize()
+            .imePadding()
+            .background(
+                Brush.Companion.linearGradient(
+                    listOf(
+                        MaterialTheme.colorScheme.surfaceContainerHigh,
+                        MaterialTheme.colorScheme.surfaceContainerLow
+                    )
+                )
+            ),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.Companion.CenterHorizontally
+    ) {
+
         Column(
             modifier = Modifier
     
@@ -66,9 +90,9 @@ fun AuthorizationScreen(
                 .fillMaxWidth()
                 .background(color = MaterialTheme.colorScheme.primary),
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
+        ) {
             Icon(
-               // modifier = Modifier.padding(top = 16.dp),
+                // modifier = Modifier.padding(top = 16.dp),
                 painterResource(R.drawable.logo_with_hole),
                 contentDescription = "",
                 tint = MaterialTheme.colorScheme.onPrimary,
@@ -78,7 +102,7 @@ fun AuthorizationScreen(
                         bottom = 16.dp
                     )
                     .height(32.dp)
-              )
+            )
             Row(
                 //horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -118,8 +142,9 @@ fun AuthorizationScreen(
                     .padding(top = 24.dp)
             )
             OutlinedTextField(
+                isError = isError,
                 value = passwordValue,
-                onValueChange = {OnPasswordValueChange(it)},
+                onValueChange = { OnPasswordValueChange(it) },
                 modifier = Modifier
                     .padding(
                         top = 20.dp,
@@ -128,10 +153,15 @@ fun AuthorizationScreen(
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
                 label = {
-                    Text(
-                        text = stringResource(R.string.password),
-                        color = MaterialTheme.colorScheme.secondary
-                    )
+                    if(isError && error != null){
+                        Text(error)
+                    }
+                    else {
+                        Text(
+                            text = stringResource(R.string.password),
+                            color = MaterialTheme.colorScheme.secondary
+                        )
+                    }
                 },
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = MaterialTheme.colorScheme.secondary,
@@ -170,7 +200,7 @@ fun AuthorizationScreen(
                     disabledContainerColor = MaterialTheme.colorScheme.onSecondaryContainer,
                     disabledContentColor = MaterialTheme.colorScheme.onSecondary
                 ),
-                enabled = passwordValue.length >= 8
+                enabled = isEnabledSend
             ) {
                 Text(
                     text = stringResource(R.string.proceed),
@@ -192,9 +222,9 @@ fun AuthorizationScreen(
                     modifier = Modifier.padding(bottom = 32.dp)
                 )
             }
-
         }
     }
+}
 
 @Preview(
     showBackground = true,
@@ -210,7 +240,10 @@ fun AuthorizationScreenPreview() {
             passwordValue = "",
             ShowPasswordToggle = {},
             showPassword = true,
-            onProceedClick = {}
+            onProceedClick = {},
+            isEnabledSend = true,
+            isError = false,
+            error = ""
         )
     }
 }

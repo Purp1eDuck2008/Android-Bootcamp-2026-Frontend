@@ -1,0 +1,21 @@
+package ru.sicampus.bootcamp2026.data.source
+
+import kotlin.io.encoding.Base64
+
+object AuthLocalDataSource {
+    val token: String? get() = _cacheToken
+
+    private var _cacheToken: String? = null
+
+    fun SetToken(login: String, password: String){
+        val decodePhrase = "${login}:${password}"
+        _cacheToken = "Basic ${Base64.encode(decodePhrase.toByteArray())}"
+    }
+
+    fun ClearToken(){
+        _cacheToken = null
+    }
+
+
+
+}

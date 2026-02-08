@@ -1,7 +1,6 @@
-package ru.sicampus.bootcamp2026.model.uistate.homescreen
+package ru.sicampus.bootcamp2026.ui.mainscreen.components
 
 import ru.sicampus.bootcamp2026.domain.entities.UserEntity
-
 
 sealed interface ListState {
     data class Error(val reason: String): ListState

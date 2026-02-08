@@ -1,4 +1,4 @@
-package ru.sicampus.bootcamp2026.ui.mainscreen
+package ru.sicampus.bootcamp2026.ui.mainscreen.components.subscreens
 
 import android.content.res.Configuration
 import androidx.compose.material3.Icon
@@ -13,13 +13,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.app.NotificationCompat
 import ru.sicampus.bootcamp2026.R
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
