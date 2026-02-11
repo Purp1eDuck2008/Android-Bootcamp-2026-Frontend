@@ -37,7 +37,7 @@ import ru.sicampus.bootcamp2026.navigation.BottomNavigationItem
 import ru.sicampus.bootcamp2026.ui.mainscreen.components.subscreens.HomeScreen
 import ru.sicampus.bootcamp2026.ui.mainscreen.components.subscreens.InvitesScreen
 import ru.sicampus.bootcamp2026.ui.mainscreen.components.subscreens.NewTask
-import ru.sicampus.bootcamp2026.ui.mainscreen.components.subscreens.ProfileScreen
+import ru.sicampus.bootcamp2026.ui.mainscreen.components.subscreens.profilescreen.ProfileScreen
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable

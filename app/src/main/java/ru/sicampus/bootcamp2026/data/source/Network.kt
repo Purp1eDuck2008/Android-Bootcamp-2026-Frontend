@@ -13,7 +13,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 object Network {
-    const val HOST = "http://192.168.1.100:8080"
+    const val HOST = "http://192.168.1.73:8080"
 
     val client by lazy{
         HttpClient(CIO){
