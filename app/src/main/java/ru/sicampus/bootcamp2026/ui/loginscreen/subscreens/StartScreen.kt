@@ -45,7 +45,8 @@ fun StartScreen(
     OnProceedClick: () -> Unit,
     loginValue: String,
     validateEmail: Boolean,
-    OnRegisterClick: () -> Unit
+    OnRegisterClick: () -> Unit,
+    onOAuthClick: () -> Unit
 ) {
 
     Column(
@@ -136,7 +137,7 @@ fun StartScreen(
             }
 
             Button(
-                onClick = {  },
+                onClick = onOAuthClick,
                 modifier = Modifier
                     .padding(
                         top = 16.dp,
@@ -165,7 +166,7 @@ fun StartScreen(
                 }
             }
             Button(
-                onClick = { },
+                onClick = onOAuthClick,
                 modifier = Modifier
                     .padding(
                         top = 8.dp,
@@ -242,7 +243,8 @@ fun StartScreenPreview2() {
             loginValue = "",
             validateEmail = false,
             OnProceedClick = { },
-            OnRegisterClick = { }
+            OnRegisterClick = { },
+            onOAuthClick = { }
         )
     }
 }

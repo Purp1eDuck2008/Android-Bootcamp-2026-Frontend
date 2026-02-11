@@ -9,12 +9,12 @@ import kotlinx.coroutines.withContext
 
 
 class AuthNetworkDataSource {
-    suspend fun checkAuth(token: String): Boolean = withContext(Dispatchers.IO){
+    suspend fun checkAuth(token: String): Result<Boolean> = withContext(Dispatchers.IO){
         runCatching {
             val result = Network.client.get("${Network.HOST}/api/person/login"){
-                header(HttpHeaders.Authorization, token)
+                addAuthHeader()
             }
             result.status == HttpStatusCode.OK
-        }.getOrElse { false }
+        }
     }
 }

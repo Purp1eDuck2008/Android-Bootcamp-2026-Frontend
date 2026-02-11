@@ -2,6 +2,7 @@ package ru.sicampus.bootcamp2026.ui.mainscreen.components.subscreens
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -21,7 +22,9 @@ import ru.sicampus.bootcamp2026.ui.mainscreen.components.ListComponent
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
-fun NewTask() {
+fun NewTask(
+    onBackButtonClick: () -> Unit
+) {
 
     Box(
         modifier = Modifier
@@ -50,6 +53,11 @@ fun NewTask() {
                         .padding(start = 16.dp)
                         .size(24.dp)
                         .align(Alignment.CenterStart)
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = null,
+                            onClick = onBackButtonClick
+                        )
                 )
                 Text(
                     fontSize = 22.sp,
@@ -277,6 +285,8 @@ fun NewTask() {
 @Composable
 fun previewNewTask() {
     AndroidBootcamp2026FrontendTheme {
-        NewTask()
+        NewTask(
+            onBackButtonClick = { }
+        )
     }
 }

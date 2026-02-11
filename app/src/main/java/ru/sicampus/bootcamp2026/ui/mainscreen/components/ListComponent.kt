@@ -31,7 +31,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
-import ru.sicampus.bootcamp2026.data.userList
 import ru.sicampus.bootcamp2026.ui.mainscreen.components.ListState
 import ru.sicampus.bootcamp2026.ui.mainscreen.components.ListViewModel
 

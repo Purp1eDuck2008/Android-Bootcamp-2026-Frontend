@@ -1,21 +1,49 @@
 package ru.sicampus.bootcamp2026.data.source
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.map
+import ru.sicampus.bootcamp2026.App
 import kotlin.io.encoding.Base64
 
 object AuthLocalDataSource {
-    val token: String? get() = _cacheToken
+
+    private var isInit = false
 
     private var _cacheToken: String? = null
 
-    fun SetToken(login: String, password: String){
+    suspend fun getToken(): String? {
+        if(!isInit){
+            _cacheToken = App.context.dataStore.data.map { preferences ->
+                preferences[TOKEN]
+            }.firstOrNull()
+            isInit = true
+        }
+
+        return _cacheToken
+    }
+
+    suspend fun SetToken(login: String, password: String){
         val decodePhrase = "${login}:${password}"
-        _cacheToken = "Basic ${Base64.encode(decodePhrase.toByteArray())}"
+        val token = "Basic ${Base64.encode(decodePhrase.toByteArray())}"
+        _cacheToken = token
+        App.context.dataStore.updateData { preferences ->
+            preferences.toMutablePreferences().also { preferences ->
+                preferences[TOKEN] = token
+            }
+        }
     }
 
     fun ClearToken(){
         _cacheToken = null
     }
 
-
-
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+    private val TOKEN = stringPreferencesKey("token")
 }

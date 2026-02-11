@@ -21,11 +21,13 @@ import androidx.compose.ui.unit.sp
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    onFabClick: () -> Unit
+) {
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { }, //сделай экран добавления и я напишу логику
+                onClick = onFabClick,
                 containerColor = MaterialTheme.colorScheme.onPrimary,
                 contentColor = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
@@ -170,6 +172,8 @@ fun HomeScreen() {
 @Composable
 fun HomeScreenPreview() {
     AndroidBootcamp2026FrontendTheme() {
-        HomeScreen()
+        HomeScreen(
+            onFabClick = { }
+        )
     }
 }

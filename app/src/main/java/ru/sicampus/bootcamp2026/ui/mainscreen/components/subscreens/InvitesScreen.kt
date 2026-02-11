@@ -21,7 +21,7 @@ import ru.sicampus.bootcamp2026.R
 import ru.sicampus.bootcamp2026.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
-fun SettingsScreen() {
+fun InvitesScreen() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -155,8 +155,8 @@ fun SettingsScreen() {
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
-fun SettingsScreenPreview() {
+fun InvitesScreenPreview() {
     AndroidBootcamp2026FrontendTheme() {
-        SettingsScreen()
+        InvitesScreen()
     }
 }

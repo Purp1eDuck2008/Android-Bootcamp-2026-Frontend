@@ -1,6 +1,10 @@
 package ru.sicampus.bootcamp2026.navigation
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.vector.VectorPainter
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -12,7 +16,7 @@ import ru.sicampus.bootcamp2026.ui.mainscreen.MainScreen
 @Composable
 fun RootNavigation() {
     val navController = rememberNavController()
-    val currentToken = runBlocking { AuthLocalDataSource.token }
+    val currentToken = runBlocking { AuthLocalDataSource.getToken()}
     
     NavHost(
         navController = navController,
@@ -21,10 +25,9 @@ fun RootNavigation() {
     ) {
         composable(route = Graphs.AUTH.route) {
             LoginScreen(
-                onSuccessfulLogin = {
-                    // Navigate to main graph and clear back stack to prevent back navigation
+                onAuthSuccess = {
                     navController.navigate(Graphs.MAIN.route) {
-                        popUpTo(Graphs.AUTH.route) { inclusive = true }
+                        popUpTo(Graphs.ROOT.route) { inclusive = false }
                         launchSingleTop = true
                     }
                 }

@@ -10,15 +10,17 @@ class AuthRepository(
     suspend fun checkAndAuth(
         login: String,
         password: String,
-    ): Boolean {
+    ): Result<Boolean> {
         authLocalDataSource.SetToken(login, password)
-        val result = authNetworkDataSource.checkAuth(
-            authLocalDataSource.token ?: return false
+        return authNetworkDataSource.checkAuth(
+            authLocalDataSource.getToken() ?: return Result.success(false)
         )
-        if (!result){
-            authLocalDataSource.ClearToken()
+            .onSuccess{ isLogin ->
+                if(!isLogin) authLocalDataSource.ClearToken()
         }
-        return result
+            .onFailure{
+                authLocalDataSource.ClearToken()
+        }
     }
 
 }

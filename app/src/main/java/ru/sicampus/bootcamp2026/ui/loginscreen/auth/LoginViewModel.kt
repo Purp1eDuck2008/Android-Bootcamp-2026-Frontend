@@ -70,16 +70,21 @@ class LoginViewModel : ViewModel(){
                         intent.login,
                         intent.password
                     )
-                    if(authCompleted){
-                        _actionFlow.emit(AuthAction.OpenScreen(Graphs.MAIN.route))
-                    }
-                    else{
-                        updateStateIfData { uiState ->
-                            uiState.copy(
-                                error = "Auth error"
-                            )
+                    checkAndSaveAuthUseCase.invoke(
+                        intent.login,
+                        intent.password
+                    ).fold(
+                        onSuccess = {
+                            _actionFlow.emit(AuthAction.OpenScreen(Graphs.MAIN.route))
+                        },
+                        onFailure = { error ->
+                            updateStateIfData{ oldState ->
+                                oldState.copy(
+                                    error = error.message
+                                )
+                            }
                         }
-                    }
+                    )
                 }
             }
         }

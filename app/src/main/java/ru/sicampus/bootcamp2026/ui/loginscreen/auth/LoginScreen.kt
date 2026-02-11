@@ -1,6 +1,7 @@
 package ru.sicampus.bootcamp2026.ui.loginscreen.auth
 
 import android.content.res.Configuration
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
@@ -30,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,19 +49,17 @@ import kotlin.math.log
 
 @Composable
 fun LoginScreen(
-    onSuccessfulLogin: () -> Unit = {},
-    loginViewModel: LoginViewModel = viewModel()
+    loginViewModel: LoginViewModel = viewModel(),
+    onAuthSuccess: () -> Unit
 ) {
-
+    val context = LocalContext.current
     val loginScreenState by loginViewModel.uiState.collectAsState()
     val currentstate = loginScreenState
 
     LaunchedEffect(Unit) {
         loginViewModel.actionFlow.collect { action ->
             when(action){
-                is AuthAction.OpenScreen -> {
-                    onSuccessfulLogin()
-                }
+                is AuthAction.OpenScreen -> onAuthSuccess()
             }
         }
     }
@@ -85,7 +85,9 @@ fun LoginScreen(
             }
         }
         is AuthState.Data -> {
-            DataScreenState(state = currentState, loginViewModel = loginViewModel)
+            DataScreenState(
+                state = currentState, loginViewModel = loginViewModel,
+            )
         }
     }
 
@@ -94,7 +96,7 @@ fun LoginScreen(
 @Composable
 fun DataScreenState(
     state: AuthState.Data,
-    loginViewModel: LoginViewModel
+    loginViewModel: LoginViewModel,
 ){
     val navController = rememberNavController()
     val focusManager = LocalFocusManager.current
@@ -103,13 +105,15 @@ fun DataScreenState(
     var passwordValue by remember { mutableStateOf("") }
     var showPassword by remember {  mutableStateOf(false) }
 
+    val context = LocalContext.current
+
     Scaffold(
         contentWindowInsets = ScaffoldDefaults.contentWindowInsets.exclude(WindowInsets.statusBars)
     ){ paddingValues ->
         NavHost(
             modifier = Modifier.padding(paddingValues),
             navController = navController,
-            startDestination = FirstScreenRoute.Start.route
+            startDestination = FirstScreenRoute.Start.route,
         ){
             composable(
                 route = FirstScreenRoute.Start.route,
@@ -132,13 +136,18 @@ fun DataScreenState(
                         loginViewModel.onIntent(AuthIntent.EmailTextInput(loginValue))
                     },
                     OnProceedClick = {
-                        navController.navigate(FirstScreenRoute.Password.route)
+                        navController.navigate(FirstScreenRoute.Password.route){
+                            launchSingleTop = true
+                        }
                     },
                     loginValue = loginValue,
                     validateEmail = state.isValidEmail ,
                     OnRegisterClick = {
-                        navController.navigate(FirstScreenRoute.Register.route)
-                    }
+                        navController.navigate(FirstScreenRoute.Register.route){
+                            launchSingleTop = true
+                        }
+                    },
+                    onOAuthClick = { Toast.makeText(context, "Not implemented yet :(", Toast.LENGTH_SHORT).show() }
                 )
             }
 
@@ -222,5 +231,7 @@ fun DataScreenState(
 )
 @Composable
 fun LoginScreenPreview(){
-    LoginScreen()
+    LoginScreen(
+        onAuthSuccess = {}
+    )
 }

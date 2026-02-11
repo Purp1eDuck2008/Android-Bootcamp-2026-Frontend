@@ -11,11 +11,10 @@ import kotlinx.coroutines.withContext
 import ru.sicampus.bootcamp2026.data.dto.UserDto
 
 class UserInfoDataSource {
-    val token = AuthLocalDataSource.token
     suspend fun getUser(): Result<List<UserDto>> = withContext(Dispatchers.IO){
         runCatching {
             val result = Network.client.get("${Network.HOST}/api/person"){
-                header(HttpHeaders.Authorization, token)
+                addAuthHeader()
             }
             if (result.status != HttpStatusCode.OK){
                 error("Status: ${result.status}")

@@ -8,7 +8,9 @@ class CheckAndSaveAuthUseCase(
     suspend operator fun invoke(
         login: String,
         password: String
-    ): Boolean {
-        return authRepository.checkAndAuth(login, password)
+    ): Result<Unit> {
+        return authRepository.checkAndAuth(login, password).mapCatching { isLogin ->
+            if (!isLogin) error("Неверный логин или пароль")
+        }
     }
 }
